@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Candidate Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+                                                   integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+    <!-- Bootstrap Table -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+
+    <link rel="stylesheet" href="../public/dashboard.css">
+    <script src="../public/candidate.js"></script>
+    <script src="../public/logout.js"></script>
+    <script src="../public/login.js"></script>
+
+
+    <link href="http://hayageek.github.io/jQuery-Upload-File/4.0.11/uploadfile.css" rel="stylesheet">
+    <script src="http://hayageek.github.io/jQuery-Upload-File/4.0.11/jquery.uploadfile.min.js"></script>
+
+</head>
+<style>
+    .section {
+        padding-top: 65px;
+        margin-top: -65px;
+        margin-bottom: 25px;
+    }
+</style>
+
+<body>
+<nav style="background-color: #32cfaf" class="navbar navbar-expand-md navbar-light fixed-top">
+    <a class="navbar-brand" href="#">HRMS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Candidate Home<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+            <span class="nav-item my-2 my-lg-0">
+                <button id='log' class="btn btn-outline-dark my-2 my-sm-0" type="button" onclick="logout()">Log out</button>
+            </span>
+
+
+    </div>
+</nav>
+
+<nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
+    <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+            <a class="nav-link active" href="#overview">Overview <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#profile">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#jobPosting">Vacancy Postings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#application">Applications</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#interview">Interviews</a>
+        </li>
+    </ul>
+</nav>
+
+
+
+
+<main role="main" class="container">
+
+    <div id="overview" class="section">
+        <h3>Overview</h3><hr>
+    </div>
+
+    <div id="profile" class="section">
+        <h3>Profile</h3><hr>
+
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="input-group">
+              <span class="input-group-addon"> Name </span>
+              <input type="text" style="text-align: center" class="form-control" id="name" disabled>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="input-group">
+              <span class="input-group-addon"> Email </span>
+              <input type="text" style="text-align: center" class="form-control" id="email" disabled>
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="input-group">
+              <span class="input-group-addon"> Phone </span>
+              <input type="text" style="text-align: center" class="form-control" id="phone" disabled>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="input-group">
+              <span class="input-group-addon"> Specialty </span>
+              <input type="text" style="text-align: center; display:block" class="form-control" id="specialty" disabled>
+              <div id="newSpec" style='text-align: center; display:none'  class="form-control">
+              <select name="specialty" id="spec">
+                <option value=" " >Please select your specialty</option>
+                <option>Family Medicine</option>
+                <option>General Surgery</option>
+                <option>Neurology</option>
+                <option>Dermatology</option>
+                <option>Internal Medicine</option>
+                <option>Neurosurgery</option>
+                <option>Emergency Medicine</option>
+                <option>Anesthesiology</option>
+                <option>Interventional Radiology</option>
+                <option>Ophthalmology</option>
+                <option value="other">Other</option>
+              </select>
+              </div>
+              <div id="otherSpec" style='text-align: center; display:none;' class="form-control">
+                <input type="text" name="nspec" id="nspec">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="input-group">
+              <span class="input-group-addon"> Employment Status </span>
+              <input type="text" style="text-align: center" class="form-control" id="employmentStatus" disabled>
+              <div id="newEmpl" style='text-align: center; display:none'  class="form-control">
+                <select name="employment" id="empl">
+                  <option value=" " >Please select your employment status</option>
+                  <option>employed</option>
+                  <option>unemployed</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+        <div style="margin: 10px 400px 10px 400px">
+            <button id="profile_edit" type="button" class="btn btn-primary" onclick="editProfile()"> Edit
+            </button>
+            <button id="profile_save" type="button" class="btn btn-danger" onclick="updateProfile()"> Save
+            </button>
+        </div>
+
+        <br>
+
+    </div>
+
+    <div id="jobPosting" class="section">
+        <h3>Vacancy Postings</h3><hr>
+        <table id="posting_table" style="font-size: 0.9rem" data-pagination="true" data-page-size="5" data-search='true'>
+        </table>
+    </div>
+
+    <div id='application' class="section">
+        <h3>Applications</h3><hr>
+        <table id="app_table" style="font-size: 0.9rem" data-pagination="true" data-page-size="5">
+        </table>
+        <h3 style="margin-top: 20px">Add an application</h3>
+          <form class="form-inline">
+              <div style="margin-right: -90px" class="form-group">
+                  <label class="control-label">Posting ID</label>
+                  <input type="number" min="1" step="1" style="width: 40%" class="form-control requiredField" id="postID" name="postID" placeholder="integer">
+              </div>
+              <div class="form-group">
+                Upload your application package
+                <div style="margin-right:30px; magin-left:20px" id="fileuploader">Upload</div>
+                <button type="button" onclick="addAppl()" class="btn btn-primary">Apply</button>
+              </div>
+          </form>
+    </div>
+
+    <div id="interview" class="section">
+        <h3>Interview Notice</h3><hr>
+        <table id="intv_table" style="font-size: 0.9rem" data-pagination="true" data-page-size="5" data-search='true'></table>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">Hospital-Resident Matching Service</span>
+    </div>
+</footer>
+
+</body>
+
+</html>
