@@ -30,9 +30,3 @@ node app/server.js
 
 Log in at http://localhost:1234 by using the right accounts in `app/seed-db.js` or by signing up.
 
-
-![Screenshot](Screen Shot 2018-02-05 at 10.55.02.png)
-
-
-
-
